@@ -13,42 +13,25 @@ This repository contains Kubernetes YAML files for deploying Nginx and two sampl
 7. `app-1-ingress.yaml` and `app-2-ingress.yaml`: Ingress YAML files for routing traffic to `app-1` and `app-2`.
 
 ## Instructions
+1. Start Minikube
+    ```bash
+    minikube start
 
-1. Apply the Nginx configuration:
+1. Apply all YAML files:
 
    ```bash
-   kubectl apply -f nginx-configmap.yaml
+    kubectl apply -f .
 
-2. Deploy the Nginx configurations:
-
+3. Ensure all pods are working
     ```bash
-    kubectl apply -f nginx-dep.yaml
-    kubectl apply -f nginx-svc.yaml
-    kubectl apply -f app-1-dep.yaml
-    kubectl apply -f app-1-svc.yaml
-    kubectl apply -f app-2-dep.yaml
-    kubectl apply -f app-2-svc.yaml
-
-3. Apply the Ingress configurations:
-
-    ```bash
-    kubectl apply -f nginx-ingress.yaml
-    kubectl apply -f app-1-ingress.yaml
-    kubectl apply -f app-2-ingress.yaml
-4. Get the nginx-service-ip by running the command:
-    ```bash
-    kubectl get svc nginx-svc
-    kubectl get svc app-1-svc
-    kubectl get svc app-2-svc
-
-    Output:
-
+    kubectl get deployments
 
 5. Test the deployments and ingress configurations using curl:
     ```bash
-    curl http://<nginx-service-ip>/nginx
-    curl http://<nginx-service-ip>/app
-    curl http://<nginx-service-ip>/app
+    curl http://$(minikube ip)/
 
 
 This `README.md` file provides an overview of the contents of the repository, instructions for deployment, and testing steps using `curl` commands. You should customize it according to your specific requirements, providing any additional information or details necessary for users to understand and use the Kubernetes configurations effectively.
+
+
+kubectl delete -f .
