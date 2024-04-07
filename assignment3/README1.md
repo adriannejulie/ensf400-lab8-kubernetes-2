@@ -49,7 +49,7 @@ This repository contains Kubernetes YAML files for deploying Nginx and two sampl
     Hello World from [app-2-dep-7f686c4d8d-lhglt]!
     Hello World from [app-1-dep-86f67f4f87-s6rwr]!
     Hello World from [app-2-dep-7f686c4d8d-lhglt]!
-    Hello World from [app-2-dep-7f686c4d8d-lhglt]!
+    Hello World from [app-1-dep-7f686c4d8d-lhglt]!
     Hello World from [app-1-dep-86f67f4f87-s6rwr]!
     Hello World from [app-1-dep-86f67f4f87-s6rwr]!
     Hello World from [app-1-dep-86f67f4f87-s6rwr]!
