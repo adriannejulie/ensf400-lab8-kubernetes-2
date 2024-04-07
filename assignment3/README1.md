@@ -40,8 +40,10 @@ This repository contains Kubernetes YAML files for deploying Nginx and two sampl
 5. Test the deployments and ingress configurations using curl:
     ```bash
     curl http://$(minikube ip)/
-- (Optional) Run 10 curl commands using:
-
+- Ouput
+    ```bash
+    Hello World from [app-1-dep-86f67f4f87-s6rwr]!
+6. (Optional) Run 10 curl commands using:
     ```bash
     for i in $(seq 1 10); do curl -s $(minikube ip):80/ ; echo ; done
 - Output
@@ -56,7 +58,6 @@ This repository contains Kubernetes YAML files for deploying Nginx and two sampl
     Hello World from [app-1-dep-86f67f4f87-s6rwr]!
     Hello World from [app-2-dep-7f686c4d8d-lhglt]!
     Hello World from [app-1-dep-86f67f4f87-s6rwr]!
-
 If you have any issues or READY from step 4 does not show 1/1, please run:
 ```bash
 kubectl delete -f .
