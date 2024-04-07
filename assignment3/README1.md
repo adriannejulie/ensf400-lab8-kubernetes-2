@@ -35,3 +35,7 @@ This `README.md` file provides an overview of the contents of the repository, in
 
 
 kubectl delete -f .
+
+kubectl create -f .
+
+minikube addons enable ingress

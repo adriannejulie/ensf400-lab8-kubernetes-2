@@ -5,12 +5,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: my-nginx
+      app: nginx
   replicas: 5
   template:
     metadata:
       labels:
-        app: my-nginx
+        app: nginx
     spec:
       containers:
       - name: nginx
@@ -18,9 +18,12 @@ spec:
         ports:
         - containerPort: 80
         volumeMounts:
-        - name: nginx-configmap
+        - name: config-volume
           mountPath: /etc/nginx/conf.d
       volumes:
-      - name: nginx-configmap
+      - name: config-volume
         configMap:
           name: nginx-configmap
+          items:
+          - key: nginx.cfg
+            path: default.conf
