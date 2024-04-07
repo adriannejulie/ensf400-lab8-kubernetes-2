@@ -16,26 +16,49 @@ This repository contains Kubernetes YAML files for deploying Nginx and two sampl
 1. Start Minikube
     ```bash
     minikube start
-
+2. Enable Ingress
+    ```bash
+    minikube addons enable ingress
 1. Apply all YAML files:
 
    ```bash
     kubectl apply -f .
-
 3. Ensure all pods are working
     ```bash
-    kubectl get deployments
+    kubectl get po
+- Example output:
+    ```bash
+    NAME                         READY   STATUS    RESTARTS   AGE
+    app-1-dep-86f67f4f87-s6rwr   1/1     Running   0          3m49s
+    app-2-dep-7f686c4d8d-lhglt   1/1     Running   0          3m49s
+    nginx-dep-74b4478f5f-btq8x   1/1     Running   0          3m48s
+    nginx-dep-74b4478f5f-gfq7t   1/1     Running   0          3m48s
+    nginx-dep-74b4478f5f-h9sxp   1/1     Running   0          3m48s
+    nginx-dep-74b4478f5f-pzq79   1/1     Running   0          3m48s
+    nginx-dep-74b4478f5f-wqndp   1/1     Running   0          3m48s
 
 5. Test the deployments and ingress configurations using curl:
     ```bash
     curl http://$(minikube ip)/
+- (Optional) Run 10 curl commands using:
 
+    ```bash
+    for i in $(seq 1 10); do curl -s $(minikube ip):80/ ; echo ; done
+- Output
+    ```bash
+    Hello World from [app-2-dep-7f686c4d8d-lhglt]!
+    Hello World from [app-1-dep-86f67f4f87-s6rwr]!
+    Hello World from [app-2-dep-7f686c4d8d-lhglt]!
+    Hello World from [app-2-dep-7f686c4d8d-lhglt]!
+    Hello World from [app-1-dep-86f67f4f87-s6rwr]!
+    Hello World from [app-1-dep-86f67f4f87-s6rwr]!
+    Hello World from [app-1-dep-86f67f4f87-s6rwr]!
+    Hello World from [app-1-dep-86f67f4f87-s6rwr]!
+    Hello World from [app-2-dep-7f686c4d8d-lhglt]!
+    Hello World from [app-1-dep-86f67f4f87-s6rwr]!
 
-This `README.md` file provides an overview of the contents of the repository, instructions for deployment, and testing steps using `curl` commands. You should customize it according to your specific requirements, providing any additional information or details necessary for users to understand and use the Kubernetes configurations effectively.
-
-
+If you have any issues or READY from step 4 does not show 1/1, please run:
+```bash
 kubectl delete -f .
-
-kubectl create -f .
-
-minikube addons enable ingress
+```
+Then try again, starting from step 3.
